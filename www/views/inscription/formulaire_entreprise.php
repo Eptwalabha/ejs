@@ -53,7 +53,7 @@ function getMessage($valide, $name){
 						<div class="line_form"><label for="en_psw2">Confirmez le mot de passe<?php echo getMessage($valide, "psw2"); ?></label>
 						<span class="saisie"><input type="password" name="psw2" id="en_psw2" class="textfield" required/></span></div>
 						<div class="line_form"><label for="en_message">Votre Message</label></div>
-						<div class="line_form"><textarea name="message" id="en_message" required><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea></div>
+						<div class="line_form"><textarea name="message" id="en_message" rows="5" required><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea></div>
 						<input type="submit" value="Me contacter!" />
 					</form>
 				</div>
