@@ -1,0 +1,221 @@
+/*
+
+Les couleurs du site:
+rouge	-> rgb(255, 0, 0)
+noir	-> rgb(0, 0, 0)
+gris-f	-> rgb(125, 125, 125)
+gris-c	-> rgb(175, 175, 175)
+blanc	-> rgb(255, 255, 255)
+
+
+*/
+
+@CHARSET "UTF-8";
+
+html {
+
+	background-color: rgb(216,216,216);
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	color: rgb(216,216,216);
+	
+}
+
+
+body {
+	
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	background-color: rgb(68, 68, 68);
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;	
+}
+
+header {
+	width: 800px;
+	text-align: center;
+}
+
+nav {
+	width: 800px;
+}
+
+nav span {
+	text-align: right;
+}
+
+article {
+	width: 800px;
+}
+
+article p {
+	width: 800px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: rgb(75, 175, 225);
+}
+
+.header {
+	color: white;
+	background-color: black;
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+.line_header {
+	color: white;
+	background-color: black;
+	text-align: center;	
+}
+
+.line_0 { /*	background-color: rgb(200,200,200); */
+	color: white;
+	background-color: rgb(125, 125, 125);
+	text-align: left;	
+}
+
+.line_1 { /*	background-color: rgb(150,150,150); */
+	color: black;
+	background-color: rgb(175, 175, 175);
+	text-align: left;	
+}
+
+.line_1 a { /*	background-color: rgb(200,200,200); */
+	color: black;
+}
+.line_1 a:hover { /*	background-color: rgb(200,200,200); */
+	text-decoration: underline;
+	color: rgb(75, 175, 225);
+}
+
+div {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+div.post_0 {
+	color: black;
+	background-color: rgb(175, 175, 175);
+	color: black;
+	padding-left: 15px;
+	padding-top: 5px;
+
+}
+
+div.post_1 {
+	color: white;
+	background-color: rgb(125, 125, 125);
+	color: black;
+	padding-left: 15px;
+	padding-top: 5px;
+}
+
+div.post_2 {
+	
+	color: white;
+	background-color: rgb(50, 50, 50);
+	color: black;
+	padding-left: 15px;
+	padding-top: 5px;
+	
+}
+
+div.post {
+	border: solid 1px black;
+	background-color: rgb(100, 200, 255);
+	color: black;		
+}
+
+div.post_header{
+	border: solid 1px black;
+	background-color: black;
+	color: white;		
+}
+
+div.post_body {
+
+	
+	
+}
+div.post_info_user {
+
+	display: inline-block;
+	margin: 2px;
+	width: 	120px;
+	border: solid 1px black;
+	color: 	black;
+	vertical-align: top;
+}
+
+div.post_text {
+
+	display: inline-block;
+	margin: 2px;
+	width: 70%;
+	background-color: rgb(255, 255, 255);
+    color: black;		
+	vertical-align: top;
+}
+
+div.error {
+
+	border: solid 5px red;
+    color: black;		
+	background-color: rgb(100, 100, 100);
+	padding: 5px;
+	margin: 5px;
+}
+
+div.error h1 {
+	text-align: center;
+}
+
+div.titre_section {
+	border: solid 1px black;
+	background-color: black;
+	color: white;	
+}
+
+div.div_news {	
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin-bottom: 10px;
+	background-color: rgb(100,100,100);
+}
+div.news_separator {	
+	background-color: black;
+}
+
+div.line_form{
+	
+	width: 600px;
+	text-align: right;
+	
+}
+.inscription input.textfield {
+	
+	float: right;
+	padding-right: 100px;
+	width: 250px;
+}
+.inscription label {
+	
+	padding-right: 20px;
+	width: 250px;
+}

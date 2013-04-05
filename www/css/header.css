@@ -1,0 +1,107 @@
+
+header{
+	background-color : #2954AE;
+	background-color : #3C78FA;
+	background-color : #6F83AD;
+	background-color : #A0BCFA;
+	background-color : #525252;
+	background-color : #ADADAD;
+	
+	background: -webkit-linear-gradient(top, #3C78FA 0%, #2954AE 100%);
+	background:    -moz-linear-gradient(top, #3C78FA 0%, #2954AE 100%);
+	background:     -ms-linear-gradient(top, #3C78FA 0%, #2954AE 100%);
+	background:      -o-linear-gradient(top, #3C78FA 0%, #2954AE 100%);
+	background:         linear-gradient(top, #3C78FA 0%, #2954AE 100%);
+	
+	box-shadow: 4px 4px 10px #aaa;
+	color : white;
+	padding: 1px;
+	vertical-align: middle;
+	
+/* 	border-top: solid 1px #BEBEBE; */
+	border-bottom: solid 1px #00ADFF;
+}
+
+header div.top_div{
+	display: inline-block;
+	height: 40px;
+}
+
+header div.start_line{
+	width: 20%;
+}
+
+header div.middle_line{
+}
+
+header div.end_line{
+	float: right;
+	text-align : right;
+}
+
+header .title{
+	font-family : palatino linotype;
+	font-size : 30px;
+	font: bold;
+	text-align : center;
+}
+
+ul.menu_top{
+	display: inline-block;
+	margin: 0px;
+}
+
+ul.menu_top li{
+	display: inline-block;
+	background-color : #6F83AD;
+	border-radius: 5px 5px 5px 5px;
+	border: solid 1px #2954AE;
+	padding: 5px;
+	margin: 0px;
+	margin-top: 5px;
+	margin-right: 1px;
+	text-align: center;
+	color : white;
+/* 	background: -webkit-linear-gradient(top, #375D81 0%, #1667A5 100%); */
+/*  background:    -moz-linear-gradient(top, #375D81 0%, #1667A5 100%); */
+/* 	background:     -ms-linear-gradient(top, #375D81 0%, #1667A5 100%); */
+/* 	background:      -o-linear-gradient(top, #375D81 0%, #1667A5 100%); */
+/* 	background:         linear-gradient(top, #375D81 0%, #1667A5 100%); */
+}
+
+ul.menu_top a{
+	color: white;
+	text-decoration: none;
+}
+
+ul.menu_top a:HOVER{
+	text-decoration: none;
+}
+
+ul.menu_top li:HOVER{
+	background-color : #2954AE;
+	border: solid 1px #6F83AD;
+}
+
+header form {
+	margin: 0px;
+	margin-right: 5px;
+	text-align: right;
+}
+
+header form input {
+	width: 100px;
+	height: 30px;
+	margin: 0px;
+	vertical-align: middle;
+}
+
+header a{
+	color: white;
+}
+
+header a:HOVER {
+	color: white;
+	font-size: larger;
+	text-decoration: none;
+}

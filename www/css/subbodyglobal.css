@@ -1,0 +1,45 @@
+.subBody {
+	background-color: #E1E6FA;
+	border-radius: 4px 4px 4px 4px;
+	margin-bottom : 20px;
+	box-shadow: 4px 4px 10px #aaa;
+}
+
+.subBodyTrans {
+	margin-bottom : 20px;
+}
+
+div.subBodyTitle {
+	border-radius: 3px 3px 3px 3px;
+	background: -webkit-linear-gradient(top, #375D81 0%, #1667A5 100%);
+    background:    -moz-linear-gradient(top, #375D81 0%, #1667A5 100%);
+	background:     -ms-linear-gradient(top, #375D81 0%, #1667A5 100%);
+	background:      -o-linear-gradient(top, #375D81 0%, #1667A5 100%);
+	background:         linear-gradient(top, #375D81 0%, #1667A5 100%);
+}
+
+.subBodyBody {
+	padding: 5px;
+}
+
+.subBodyContent {
+	padding: 5px;
+}
+
+div.subBodyMenu {
+	padding-top : 10px;
+	padding-left: 10px;
+}
+
+div.Shadow {
+	box-shadow: 2px 2px 5px #aaa;
+}
+
+div.subBodyTitle  h2{
+	margin : 0px;
+	margin-left : 10px;
+	color : white;
+	font-size : 19px;
+	line-height : 27px;
+}
+
