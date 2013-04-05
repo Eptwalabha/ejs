@@ -4,8 +4,8 @@
 // Version du module de codage: 1.0.0
 // Developpeur du module: Damien GABRIELLE
 // mail: damiengabrielle@gmail.com
-// date de génération: Sun Jun 10 10:49:34 CEST 2012
-// nom de la machine: Benhï-PC
+// date de gï¿½nï¿½ration: Sun Jun 10 10:49:34 CEST 2012
+// nom de la machine: Benhï¿½-PC
 
 class Connection {
 	
