@@ -24,10 +24,13 @@ class Accueil extends Controller{
 		if(isset($_POST['login']) && isset($_POST['psw'])){
 
 			$this->loadModel("User");
-			if($this->User->getUserIdFromForm($_POST['login'], $_POST['psw'], $this->connection) > 0){
+			$id = $this->User->getUserIdFromForm($_POST['login'], $_POST['psw'], $this->connection);
+			
+			if($id > 0){
 				session_destroy();
 				session_start();
-				$this->User->read($this->connection);
+				$this->User->readFromId($id, $this->connection);
+				$this->User->setSessionFromUser();
 			}
 			
 			include('./views/commun/header.php');

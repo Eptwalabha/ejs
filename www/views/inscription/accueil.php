@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span12">
-		<h1>Espace étudiants</h1>
+		<h1>Inscription</h1>
 	</div>
 </div>
 <div class="row-fluid">

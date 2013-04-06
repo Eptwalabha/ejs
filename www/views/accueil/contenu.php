@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span12">
-		<h1>Bienvenue!</h1>
+		<h1>Bienvenue<?php if(isset($_SESSION['user_pseudo'])) echo " ".$_SESSION['user_pseudo']; ?>!</h1>
 	</div>
 </div>
 <div class="row-fluid">
@@ -15,9 +15,6 @@
 		?>
 	</div>
 	<div class="span9">
-		<?php //  
-		// 	include('./views/accueil/role_ejs.php');	
-		// ?>
 		<div class="subBody">
 			<div class="subBodyTitle">
 				<h2>Les dernières news!</h2>

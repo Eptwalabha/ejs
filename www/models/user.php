@@ -3,7 +3,18 @@ class User{
 	
 	public $table = "user";
 	public $ab_table = "us";
-			
+	
+// 	private $us_id;
+// 	private $us_pseudo;
+// 	private $us_first_name;
+// 	private $us_last_name;
+// 	private $us_mail;
+// 	private $us_phone;
+// 	private $us_date;
+// 	private $us_ut_id;
+// 	private $us_picture;
+// 	private $us_active;
+	
 	// -----------------------------------------------------
 	//   MUTATEURS
 	// -----------------------------------------------------
@@ -32,6 +43,10 @@ class User{
 	//   ASSESSEURS
 	// -----------------------------------------------------
 	
+	public function getUserField($field){
+		return $this->$field;
+	}
+	
 	public function getUserId() {
 		return $this->us_id;
 	}
@@ -56,11 +71,20 @@ class User{
 	//   M�THODES
 	// -----------------------------------------------------
 	
-	public function read($connection) {
+	public function readFromId($id, $connection) {
 	
-		$result = $connection->select("*", $this->table, "us_id=".$this->id);
+		$result = $connection->select("*", $this->table, "us_id=".$id);
 		while ($tuple = $result->fetch()){
-			$this->data = $tuple;
+			$this->readFromArray($tuple);
+			return true;
+		}
+		return false;
+	}
+	
+	public function readFromLogin($login, $connection) {
+	
+		$result = $connection->select("*", $this->table, "us_pseudo='".$login."'");
+		while ($tuple = $result->fetch()){
 			$this->readFromArray($tuple);
 			return true;
 		}
@@ -76,8 +100,8 @@ class User{
 		$result = $connexion->directSelect($sql);
 		
 		while ($tuple = $result->fetch()){
-			$this->id = $tuple['us_id'];
-			return $this->id;
+			$this->us_id = $tuple['us_id'];
+			return $this->us_id;
 		}
 		
 		return -1;
@@ -85,14 +109,14 @@ class User{
 	
 	public function readFromArray($array) {
 	
-		$_SESSION['user_id'] = $array['us_id'];
-		$_SESSION['user_pseudo'] = $array['us_pseudo'];
-		$_SESSION['user_mail'] = $array['us_mail'];
-		$_SESSION['user_phone'] = $array['us_phone'];
-		$_SESSION['user_mode'] = $array['us_ut_id'];
+// 		$_SESSION['user_id'] = $array['us_id'];
+// 		$_SESSION['user_pseudo'] = $array['us_pseudo'];
+// 		$_SESSION['user_mail'] = $array['us_mail'];
+// 		$_SESSION['user_phone'] = $array['us_phone'];
+// 		$_SESSION['user_mode'] = $array['us_ut_id'];
 		
 		foreach($array as $k => $v){
-			$this->k = $v;
+			$this->$k = $v;
 		}
 		
 	}
@@ -214,13 +238,13 @@ class User{
 	//   FONCTIONS AJOUTEES
 	// -----------------------------------------------------
 	
-	public function setUserAsSession($id, $login, $mail, $phone, $ut_id){
+	public function setSessionFromUser(){
 	
-		$_SESSION['user_id'] = $id;
-		$_SESSION['user_pseudo'] = $login;
-		$_SESSION['user_mail'] = $mail;
-		$_SESSION['user_phone'] = $mail;
-		$_SESSION['user_mode'] = $ut_id;
+		$_SESSION['user_id'] = $this->us_id;
+		$_SESSION['user_pseudo'] = $this->us_pseudo;
+		$_SESSION['user_mail'] = $this->us_mail;
+		$_SESSION['user_phone'] = $this->us_phone;
+		$_SESSION['user_mode'] = $this->us_ut_id;
 	
 	}
 	
@@ -274,7 +298,6 @@ class User{
 		while($tuple = $result->fetch()){
 				
 			$list[] = array(
-						
 					'en_id' => $tuple['us_id'],
 					'en_name' => $tuple['en_name'],
 					'en_pseudo' => $tuple['us_pseudo'],
@@ -285,5 +308,6 @@ class User{
 		return $list;
 		
 	}
+	
 	
 }

@@ -7,8 +7,33 @@ class Mon_Espace extends Controller{
 		
 	}
 	
-	public function profil(){
-		$this->error("travaux");
+	public function profil($user_login = ""){
+		
+		if(isset($_SESSION['user_id'])){
+			
+			$this->loadModel("User");
+			
+			$exists = false;
+			
+			if($user_login == ""){
+				$exists = $this->User->readFromId($_SESSION['user_id'], $this->connection);
+			}else{
+				$exists = $this->User->readFromLogin($user_login, $this->connection);
+			}
+			
+			$var = array();
+			$var['user'] = $this->User;
+			$this->setData($var);
+			
+			if($exists){
+				$this->render("profil");
+			}else{
+				$this->render("inconnu");
+			}
+			
+		}else{
+			$this->render("redirect");
+		}
 	}
 	
 	public function cv($cv_us_id = 0){
