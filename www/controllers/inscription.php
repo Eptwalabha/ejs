@@ -64,6 +64,11 @@ class Inscription extends Controller{
 			if($form_valide){
 				$this->loadModel("User");
 				$this->User->saveNewStudent($this->connection);
+				
+				mkdir( ROOT."public/user/".$_POST['login'], 0755);
+				mkdir( ROOT."public/user/".$_POST['login']."/img", 0755);
+				mkdir( ROOT."public/user/".$_POST['login']."/file", 0755);
+				
 				$this->render("new_contact_ok");
 			}else{
 				$this->setData($var);

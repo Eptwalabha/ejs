@@ -22,7 +22,7 @@
 			<div class="row-fluid">
 				<div class="span4">
 					<div>
-						<img alt="image de pseudo" src="<?php echo WEBROOT; ?>img/<?php echo $user->getUserField('us_picture');?>" />
+						<img alt="image de pseudo" src="<?php echo $user->getUserPictureUrl(); ?>" />
 					</div>
 					<div>
 						<?php

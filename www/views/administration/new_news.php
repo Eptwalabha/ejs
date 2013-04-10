@@ -23,7 +23,7 @@
 				<form action="<?php echo WEBROOT; ?>administration/nouvelle_news" method="post">
 					<label for="id_news_title">Titre de la news</label><input type="text" id="id_news_title" name="news_title" placeholder="Le titre de votre news" required/>
 					<label for="id_news_text">Votre news</label>
-					<textarea name="news_text" id="id_news_text"><?php
+					<textarea class="editor" name="news_text" id="id_news_text" required><?php
 										if(isset($news)){
 											echo $news['news_text'];
 										}
@@ -34,30 +34,9 @@
 		</div>
 	</div>
 </div>
-<script src="<?php echo WEBROOT; ?>js/tinymce/jscripts/tiny_mce/jquery.tinymce.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo WEBROOT; ?>js/jQuery-TE/jquery-te-1.3.5.min.js" ></script>
 <script>
 
-	$(function() {
-
-		$('#id_news_text').tinymce({
-
-			script_url : '<?php echo WEBROOT; ?>js/tinymce/jscripts/tiny_mce/tiny_mce.js',
-
-            theme : "advanced",          
-            plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-
-            // Theme options
-            theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote",
-            theme_advanced_buttons2 : "undo,redo,|,link,unlink,image,cleanup,|,sub,sup,|,emotions,|,print,|,ltr,rtl",
-           	theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-
-            // Drop lists for link/image/media/template dialogs
-            template_external_list_url : "lists/template_list.js",
-            external_link_list_url : "lists/link_list.js",
-            external_image_list_url : "lists/image_list.js",
-            media_external_list_url : "lists/media_list.js",
-            
-		});
-	})
+	$(".editor").jqte();
+		
 </script>

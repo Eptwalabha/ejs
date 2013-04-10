@@ -19,6 +19,8 @@
 			<div class="subBodyContent">
 		<?php 
 		if(!empty($cv['user'])){
+
+			$user = $cv['user'];
 		?>
 				<div id="my_cv_tabs">
 					<ul>
@@ -30,14 +32,14 @@
 							<div class="row">
 								<div class="span4">
 									<div class="cv_user_info">
-										<span class="user_last_name" ><?php echo strtoupper($cv['user']['last_name']); ?></span> <?php echo $cv['user']['first_name']; ?><br />
-										<a href="mailto:<?php echo $cv['user']['mail']; ?>" ><?php echo $cv['user']['mail']; ?></a><br />
-										<?php echo $cv['user']['phone']; ?><br />
+										<span class="user_last_name" ><?php echo strtoupper($user->getUserField("us_last_name")); ?></span> <?php echo $user->getUserField("us_first_name"); ?><br />
+										<a href="mailto:<?php echo $user->getUserField("us_mail"); ?>" ><?php echo $user->getUserField("us_mail"); ?></a><br />
+										<?php echo $user->getUserField("us_phone"); ?><br />
 									</div>
 								</div>
 								<div class="offset4 span4">
 									<div class="cv_user_picture">
-										<img src="<?php echo WEBROOT; ?>img/defaut.png" alt="photo de user" />
+										<img src="<?php echo $user->getUserPictureUrl(); ?>" alt="photo de <?php echo $user->getUserField("us_pseudo"); ?>" />
 									</div>
 								</div>
 							</div>
@@ -142,7 +144,7 @@
 		?>
 											</select><br />
 											<label for="ta_detail">Détails:</label>
-											<textarea id="ta_detail" name="detail" placeholder="Décrivez brièvement votre expérience dans ce domaine"></textarea><br />
+											<textarea class="editor" id="ta_detail" name="detail" placeholder="Décrivez brièvement votre expérience dans ce domaine"></textarea><br />
 										</div>
 										<button id="b_add" type="button">Ajouter / Modifer</button><button id="b_supp" type="button">Supprimer</button>
 									</form>
@@ -163,11 +165,14 @@
 		</div>
 	</div>
 </div>
-<script src="<?php echo WEBROOT; ?>js/tinymce/jscripts/tiny_mce/jquery.tinymce.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="<?php echo WEBROOT; ?>js/jQuery-TE/jquery-te-1.3.5.min.js" ></script>
 <script>
 	$(function() {
 		$('#my_cv_tabs').tabs();
-	    $('#cb_cat').on('change', function(){
+		$(".editor").jqte();
+		
+		$('#cb_cat').on('change', function(){
 
 	        var cat_id = $('#cb_cat').val();
 	        
@@ -194,11 +199,12 @@
 				success: function(html) {
 					$('#changement').empty();
 					$('#changement').append(html);
-					$('#ta_detail').tinycall();
+					$('#ta_detail').jqte();
 				}
 			});
 			return false;
 		});
+		
 		$('#b_add').click(function(){
 
 			var $form = $(this).parent("form");
@@ -240,29 +246,6 @@
 			return false;
 						
 		});
-
-		$.fn.tinycall = function(){
-			$('#ta_detail').tinymce({
-
-				script_url : '<?php echo WEBROOT; ?>js/tinymce/jscripts/tiny_mce/tiny_mce.js',
-
-	            theme : "advanced",
-	            plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-
-	            // Theme options
-	            theme_advanced_buttons1 : "bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,link,unlink",
-	            theme_advanced_toolbar_location : "top",
-	            theme_advanced_toolbar_align : "left",
-
-	            // Drop lists for link/image/media/template dialogs
-	            template_external_list_url : "lists/template_list.js",
-	            external_link_list_url : "lists/link_list.js",
-	            external_image_list_url : "lists/image_list.js",
-	            media_external_list_url : "lists/media_list.js",
-	            
-			});
-		};
 		
-		$('#ta_detail').tinycall();
 	});
 </script>

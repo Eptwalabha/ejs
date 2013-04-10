@@ -61,32 +61,10 @@ function getMessage($valide, $name){
 		</div>
 	</div>
 </div>
-<script src="<?php echo WEBROOT; ?>js/tinymce/jscripts/tiny_mce/jquery.tinymce.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="<?php echo WEBROOT; ?>js/jQuery-TE/jquery-te-1.3.5.min.js" ></script>
 <script>
-$(function() {
 
-	$.fn.tinycall = function(){
-		$('#en_message3').tinymce({
-
-			script_url : '<?php echo WEBROOT; ?>js/tinymce/jscripts/tiny_mce/tiny_mce.js',
-
-            theme : "advanced",
-            plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-
-            // Theme options
-            theme_advanced_buttons1 : "bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,link,unlink",
-            theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-
-            // Drop lists for link/image/media/template dialogs
-            template_external_list_url : "lists/template_list.js",
-            external_link_list_url : "lists/link_list.js",
-            external_image_list_url : "lists/image_list.js",
-            media_external_list_url : "lists/media_list.js",
-            
-		});
-	};
+	$('#en_message').jqte();
 	
-	$('#en_message').tinycall();
-});
 </script>

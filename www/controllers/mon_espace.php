@@ -44,14 +44,20 @@ class Mon_Espace extends Controller{
 				
 				$var = array();
 				$this->loadModel("CV");
+				$this->loadModel("User");
+				
+				$user = new User();
 				
 				if($cv_us_id == 0 || $cv_us_id == $_SESSION['user_id']){
-					$var['cv'] = $this->CV->getCV($this->connection, $_SESSION['user_id']);
+					$user->readFromId($_SESSION['user_id'], $this->connection);
+					$var['cv'] = $this->CV->getCV($this->connection, $user);
 				}else{
 					if($_SESSION['user_mode'] == 1 || $_SESSION['user_mode'] == 2){
-						$var['cv'] = $this->CV->getCV($this->connection, $cv_us_id);
+						$user->readFromId($cv_us_id, $this->connection);
+						$var['cv'] = $this->CV->getCV($this->connection, $user);
 					}else{
-						$var['cv'] = $this->CV->getCV($this->connection, $_SESSION['user_id']);
+						$user->readFromId($_SESSION['user_id'], $this->connection);
+						$var['cv'] = $this->CV->getCV($this->connection, $user);
 					}
 				}
 				

@@ -1,28 +1,15 @@
 <?php
 class CV {
 
-	public function getCV($connection, $us_id){
+	public function getCV($connection, $user){
 		
 		$cv = array();
 
 		$cv['list_field'] = array();
-		$cv['user'] = array();
 		
-		$sql = 	"select us_last_name, us_first_name, us_mail, us_phone, us_picture ".
-				"from user ".
-				"where us_id=$us_id and us_visible=1";
+		$cv['user'] = $user;
 		
-		$result_user = $connection->directSelect($sql);
-		
-		while ($tuple = $result_user->fetch()){
-			$cv['user'] = array(
-				'last_name' => $tuple['us_last_name'],
-				'first_name' => $tuple['us_first_name'],
-				'mail' => $tuple['us_mail'],
-				'phone' => $tuple['us_phone'],
-				'picture' => $tuple['us_picture'],
-			);
-		}
+		$us_id = $user->getUserId();
 		
 		$sql =	"select cat_name, kno_name, lvl_label, comp_detail, comp_valid, comp_visible ".
 				"from competent inner join level l on comp_lvl_id=lvl_id ".
@@ -93,6 +80,7 @@ class CV {
 		
 		return $cv;
 	}
+
 	
 	public function getCatList($connection){
 		

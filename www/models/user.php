@@ -67,6 +67,18 @@ class User{
 		return $this->us_ut_id;
 	}
 	
+	public function getUserPictureUrl() {
+		
+		if(isset($this->us_picture)){
+			if($this->us_picture != null){
+				return WEBROOT."public/user/".$this->us_pseudo."/img/".$this->us_picture;
+			}
+		}
+		
+		return WEBROOT."img/defaut.png";
+		
+	}
+	
 	// -----------------------------------------------------
 	//   M�THODES
 	// -----------------------------------------------------
@@ -168,7 +180,7 @@ class User{
 		
 		$connection->insert($table, $champ, $value);
 		
-		$this->setUserAsSession($us_id, $login, $mail, $phone, 3);
+		$this->setSessionFromData($us_id, $login, $mail, $phone, 3);
 		
 	}
 	
@@ -199,7 +211,7 @@ class User{
 
 		$us_id = $connection->lastInsertID();
 		
-		$this->setUserAsSession($us_id, $login, $mail, $phone, 5);
+		$this->setSessionFromData($us_id, $login, $mail, $phone, 5);
 		
 	}
 	
@@ -213,8 +225,6 @@ class User{
 		
 		return $connection->lastInsertID();
 	}
-	
-	
 	
 	public function update($connexion) {
 	
@@ -237,6 +247,16 @@ class User{
 	// -----------------------------------------------------
 	//   FONCTIONS AJOUTEES
 	// -----------------------------------------------------
+	
+	public function setSessionFromData($us_id, $login, $mail, $phone, $type){
+	
+		$_SESSION['user_id'] = $us_id;
+		$_SESSION['user_pseudo'] = $login;
+		$_SESSION['user_mail'] = $mail;
+		$_SESSION['user_phone'] = $phone;
+		$_SESSION['user_mode'] = $type;
+	
+	}
 	
 	public function setSessionFromUser(){
 	
