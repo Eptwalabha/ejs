@@ -18,11 +18,11 @@ require("./core/datachecker.php");
 $connection = new Connection(DB_DNS, DB_NAME, DB_LOGIN, DB_PSW, false);
 $connection->connect();
 
-$param = explode("/", $_GET["param"]);
+$param = explode("/", $_GET["param"], 3);
 
 if(file_exists(ROOT."controllers/".$param[0].".php")){
 	$controller = $param[0];
-	$action = isset($param[1]) ? $param[1] : 'bonjour';
+	$action = count($param) > 1 ? $param[1] : 'bonjour';
 }else{
 	$controller = "accueil";
 	$action = "bonjour";
@@ -34,7 +34,7 @@ $controller = new $controller($connection);
 
 if(method_exists($controller, $action)){
 	
-	if(isset($param[2])){
+	if(count($param) > 2){
 		$controller->$action($param[2]);
 	}else{
 		$controller->$action();

@@ -11,10 +11,6 @@ class Administration extends Controller{
 		
 		if($this->isAdmin()){
 							
-			$this->loadModel("User");
-			$var['student'] = $this->User->getStudentList($this->connection);
-			$var['client'] = $this->User->getClientList($this->connection);
-			$this->setData($var);
 			$this->render("accueil");
 			
 		}else{
@@ -36,15 +32,25 @@ class Administration extends Controller{
 	public function liste($type){
 		
 		if($this->isAdmin()){
-			if($type == "pro"){
-				
+			
+			$var = array();
+			$this->loadModel("User");
+			$page = "liste_utilisateurs";
+			
+			if($type == "professionnels"){
+				$var['client'] = $this->User->getClientList($this->connection);
+				$page = "liste_entreprises";
 			}
-			if($type == "etudiant"){
-				
+			if($type == "etudiants"){
+				$var['student'] = $this->User->getStudentList($this->connection);
+				$page = "liste_etudiants";
+			}
+			if($type == "utilisateurs"){
+				$var['user'] = $this->User->getUserList($this->connection);
 			}
 			
-			// $this->setData($var);
-			$this->render("liste");
+			$this->setData($var);
+			$this->render($page);
 			
 		}else{
 			$this->render("redirect");

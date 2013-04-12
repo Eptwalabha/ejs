@@ -80,7 +80,7 @@ class User{
 	}
 	
 	// -----------------------------------------------------
-	//   M�THODES
+	//   MéTHODES
 	// -----------------------------------------------------
 	
 	public function readFromId($id, $connection) {
@@ -278,56 +278,56 @@ class User{
 	
 	public function getStudentList($connection){
 		
-		
-		$sql = 	"select us_id, us_last_name, us_first_name, us_pseudo, ut_label ".
-				"from user inner join user_type on us_ut_id=ut_id ".
-				"where us_ut_id=1 or us_ut_id=2 or us_ut_id=5";
-		
-		$result = $connection->directSelect($sql);
+		$result = $connection->select(	"*",
+										"user inner join user_type on us_ut_id=ut_id",
+										"us_ut_id=1 or us_ut_id=2 or us_ut_id=5");
 		
 		$list = array();
 		
-		while($tuple = $result->fetch()){
-			
-			$list[] = array(
-					
-					'user_id' => $tuple['us_id'],
-					'us_name' => $tuple['us_last_name'],
-					'user_first_name' => $tuple['us_first_name'],
-					'user_pseudo' => $tuple['us_pseudo'],
-					'user_mode' => $tuple['ut_label'],
-					); 
-			
+		while ($tuple = $result->fetch()){
+		
+			$user = new User();
+			$user->readFromArray($tuple);
+			$list[] = $user;
 		}
 		
 		return $list;
-		
-		
 	}
 	
 	public function getClientList($connection){
 	
-	
-		$sql = 	"select us_id, en_name, us_pseudo ".
+		$sql = 	"select * ".
 				"from user inner join enterprise on us_id=en_us_id";
-	
-		$result = $connection->directSelect($sql);
-	
+		
+		$result = $connection->select(	"*",
+										"user inner join enterprise on us_id=en_us_id");
+		
 		$list = array();
-	
-		while($tuple = $result->fetch()){
-				
-			$list[] = array(
-					'en_id' => $tuple['us_id'],
-					'en_name' => $tuple['en_name'],
-					'en_pseudo' => $tuple['us_pseudo'],
-			);
-				
+		
+		while ($tuple = $result->fetch()){
+		
+			$user = new User();
+			$user->readFromArray($tuple);
+			$list[] = $user;
 		}
 		
 		return $list;
 		
 	}
 	
-	
+	public function getUserList($connection) {
+		
+		$result = $connection->select("*", $this->table, "");
+		
+		$list = array();
+		
+		while ($tuple = $result->fetch()){
+				
+			$user = new User();
+			$user->readFromArray($tuple);
+			$list[] = $user;
+		}
+		
+		return $list;
+	}
 }

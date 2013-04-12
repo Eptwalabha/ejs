@@ -125,12 +125,18 @@ class Inscription extends Controller{
 				$var['valide']['psw2'] = array(true, "");
 			}
 			
-			$form_valide = 	$var['valide']['login'][0] && $var['valide']['mail'][0] &&
-			$var['valide']['psw1'][0] && $var['valide']['psw2'][0];
+			$form_valide = 	$var['valide']['login'][0] && $var['valide']['siret'][0] && 
+							$var['valide']['mail'][0] && $var['valide']['psw1'][0] && 
+							$var['valide']['psw2'][0];
 			
 			if($form_valide){
 				$this->loadModel("User");
 				$this->User->saveNewEnterprise($this->connection);
+				
+				mkdir( ROOT."public/user/".$_POST['login'], 0755);
+				mkdir( ROOT."public/user/".$_POST['login']."/img", 0755);
+				mkdir( ROOT."public/user/".$_POST['login']."/file", 0755);
+				
 				$this->render("new_contact_ok");
 			}else{
 				$this->setData($var);

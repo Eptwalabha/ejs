@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span12">
-		<h1>Liste entreprises</h1>
+		<h1>Liste des utilisateurs</h1>
 	</div>
 </div>
 <div class="row-fluid">
@@ -29,16 +29,15 @@
 						</tr>
 				<?php
 					$count = 0;
-					foreach ($client as $c){
-				
-						if($count > 1) $count = 0;
+					foreach ($user as $u){
 				?>
-						<tr class="line_<?php echo $count; ?>">
-							<td><?php echo $c['en_id']; ?></td>
-							<td><?php echo $c['en_pseudo']; ?></td>
-							<td><?php echo $c['en_name']; ?></td>
+						<tr class="line_<?php echo ($count % 2); ?>">
+							<td><?php echo $u->getUserId(); ?></td>
+							<td><a href="<?php echo WEBROOT."mon_espace/profil/".$u->getUserPseudo(); ?>"><?php echo $u->getUserPseudo(); ?></a></td>
+							<td><?php echo $u->getUserField('us_last_name'); ?></td>
 						</tr>
-				<?php 
+				<?php
+						$count++;
 					}
 				?>
 					</tbody>

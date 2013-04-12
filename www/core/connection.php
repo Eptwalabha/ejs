@@ -110,6 +110,7 @@ class Connection {
 	 * Permet d'ex�cuter des requ�tes de type SELECT
 	 */
 	private function doQuery($query) {
+		
 		return $this->connexion->query($query);
 	}
 	
@@ -154,9 +155,14 @@ class Connection {
 	/**
 	 * Permet de s�lectionner des donn�es dans la base de donn�es
 	 */
-	public function select($select, $from, $where) {
+	public function select($select, $from, $where = "") {
 		
-		$q = "select $select from $from where $where;";
+		$q = "select $select from $from";
+		
+		if($where != ""){
+			$q .= " where $where";
+		}
+		
 		if($this->mode_debug) echo $q."\n";
 		return $this->doQuery($q);
 		
